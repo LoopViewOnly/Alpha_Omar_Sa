@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>السابع د موفيت | ذكرياتنا</title>
+
+<style>
+:root {
+  --gold:#ffe08a;
+  --purple:#a65cff;
+  --deep:#10091b;
+  --panel:rgba(30,17,48,.91);
+  --text:#fff;
+  --muted:#d6c9e5;
+  --line:rgba(255,224,138,.35);
+}
+* {box-sizing:border-box;scroll-behavior:smooth}
+body {
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  color:var(--text);
+  background:
+    linear-gradient(rgba(10,5,20,.87),rgba(10,5,20,.91)),
+    url("images/background.jpg") center/cover fixed;
+  background-color:var(--deep);
+  overflow-x:hidden;
+}
+body.light {
+  --panel:rgba(255,255,255,.94);
+  --text:#241333;
+  --muted:#59496a;
+  --line:rgba(130,70,180,.3);
+  background:
+    linear-gradient(rgba(246,237,255,.88),rgba(246,237,255,.94)),
+    url("images/background.jpg") center/cover fixed;
+  background-color:#f6edff;
+}
+a {color:inherit;text-decoration:none}
+button {
+  cursor:pointer;
+  border:1px solid var(--gold);
+  color:white;
+  padding:12px 19px;
+  border-radius:30px;
+  font-size:14px;
+  font-family:inherit;
+  background:linear-gradient(135deg,#7124b5,#b56cff);
+  transition:.25s;
+}
+button:hover {
+  transform:translateY(-3px);
+  box-shadow:0 0 20px #a65cff;
+}
+input,textarea {
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid var(--purple);
+  background:rgba(255,255,255,.96);
+  color:#21152c;
+  font-family:inherit;
+  font-size:15px;
+  margin:8px 0;
+}
+textarea {min-height:110px;resize:vertical}
+.container {width:min(1120px,92%);margin:auto}
+section {padding:75px 0}
+.section-box {
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:30px;
+  box-shadow:0 10px 40px rgba(0,0,0,.2);
+}
+.section-title {
+  text-align:center;
+  margin:0 0 15px;
+  color:var(--gold);
+  font-size:clamp(25px,4vw,36px);
+}
+.section-subtitle {
+  text-align:center;
+  color:var(--muted);
+  line-height:2;
+  margin:0 auto 35px;
+  max-width:720px;
+}
+.tag {
+  color:var(--gold);
+  letter-spacing:2px;
+  font-size:13px;
+  text-align:center;
+}
+.topbar {
+  background:rgba(12,6,22,.94);
+  border-bottom:1px solid var(--line);
+  padding:13px 4%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+.brand {color:var(--gold);font-weight:bold;font-size:19px}
+.top-info {font-size:13px;color:#e8d8ff}
+nav {
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  padding:13px;
+  background:rgba(17,8,30,.96);
+  border-bottom:1px solid var(--line);
+}
+nav a {
+  color:white;
+  padding:10px 14px;
+  border-radius:25px;
+  font-size:13px;
+  transition:.2s;
+}
+nav a:hover {background:#7432ad;color:var(--gold)}
+.hero {
+  min-height:650px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:70px 15px;
+  position:relative;
+}
+.hero-content {max-width:850px}
+.hero-badge {
+  display:inline-block;
+  border:1px solid var(--gold);
+  border-radius:30px;
+  padding:10px 20px;
+  color:var(--gold);
+  background:rgba(100,40,150,.2);
+}
+.hero h1 {
+  font-size:clamp(40px,8vw,78px);
+  color:var(--gold);
+  margin:25px 0 15px;
+  text-shadow:0 0 30px #9e54ff;
+}
+.hero p {
+  color:var(--muted);
+  font-size:18px;
+  line-height:2.1;
+}
+.hero-buttons {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:30px;
+}
+.outline-button {background:transparent}
+.scroll-hint {margin-top:55px;color:var(--gold);font-size:13px}
+.divider {
+  width:100px;height:3px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:20px auto 35px;
+}
+.about-grid {
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:25px;
+  align-items:stretch;
+}
+.about-text {
+  line-height:2.3;
+  color:var(--muted);
+  font-size:16px;
+}
+.about-highlight {
+  border:1px solid var(--purple);
+  border-radius:20px;
+  padding:25px;
+  background:rgba(140,70,220,.12);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+}
+.about-highlight strong {
+  color:var(--gold);
+  font-size:38px;
+}
+.stats {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+.stat {
+  text-align:center;
+  padding:25px 10px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:rgba(150,80,230,.12);
+}
+.stat strong {
+  display:block;
+  color:var(--gold);
+  font-size:35px;
+  margin-bottom:10px;
+}
+.stat span {color:var(--muted);font-size:14px}
+.gallery-main {
+  position:relative;
+  max-width:850px;
+  margin:auto;
+}
+.gallery-main img {
+  display:block;
+  width:100%;
+  height:480px;
+  object-fit:contain;
+  background:#160c22;
+  border:3px solid var(--gold);
+  border-radius:20px;
+  box-shadow:0 0 25px rgba(166,92,255,.4);
+}
+.gallery-controls {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+  margin:22px 0;
+}
+#photoCount {color:var(--gold)}
+.thumbnails {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.thumbnails img {
+  width:90px;height:65px;
+  object-fit:cover;
+  border:2px solid var(--purple);
+  border-radius:9px;
+  cursor:pointer;
+}
+.thumbnails img.active {border-color:var(--gold);box-shadow:0 0 12px var(--gold)}
+.timeline {
+  max-width:800px;
+  margin:auto;
+  border-right:2px solid var(--purple);
+  padding-right:25px;
+}
+.timeline-item {
+  position:relative;
+  margin-bottom:30px;
+  background:rgba(150,80,230,.12);
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:20px;
+}
+.timeline-item:before {
+  content:"";
+  position:absolute;
+  right:-34px;top:25px;
+  width:15px;height:15px;
+  background:var(--gold);
+  border-radius:50%;
+  box-shadow:0 0 12px var(--gold);
+}
+.timeline-item h3 {color:var(--gold);margin:0 0 10px}
+.timeline-item p {color:var(--muted);line-height:2;margin:0}
+.video-frame {
+  max-width:900px;
+  margin:auto;
+  padding:12px;
+  border:2px solid var(--gold);
+  border-radius:22px;
+  box-shadow:0 0 25px rgba(166,92,255,.3);
+  background:#120a1b;
+}
+video {width:100%;max-height:520px;border-radius:14px;display:block}
+.features {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.feature {
+  text-align:center;
+  padding:25px 18px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(150,80,230,.1);
+  transition:.25s;
+}
+.feature:hover {transform:translateY(-6px);box-shadow:0 0 20px rgba(166,92,255,.25)}
+.feature .emoji {font-size:36px}
+.feature h3 {color:var(--gold)}
+.feature p {color:var(--muted);line-height:2;font-size:14px}
+.message-list {margin-top:25px}
+.message {
+  padding:17px;
+  margin:12px 0;
+  border:1px solid var(--purple);
+  border-radius:14px;
+  background:rgba(150,80,230,.12);
+  overflow-wrap:anywhere;
+}
+.message strong {color:var(--gold)}
+.message p {line-height:1.9;margin-bottom:0}
+.game-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  max-width:500px;
+  margin:25px auto;
+}
+.memory-card {
+  height:90px;
+  font-size:30px;
+  border:2px solid var(--gold);
+  border-radius:14px;
+  background:#51227a;
+  color:white;
+  cursor:pointer;
+}
+.memory-card.matched {background:#174d37;border-color:#78e5a2}
+.quiz-question {
+  text-align:center;
+  font-size:20px;
+  line-height:1.8;
+  margin:25px 0;
+}
+.answers {display:grid;gap:12px;max-width:550px;margin:auto}
+.answers button {width:100%}
+.center {text-align:center}
+.result {color:var(--gold);font-size:18px;line-height:2}
+.contact-card {
+  max-width:650px;
+  margin:auto;
+  text-align:center;
+}
+.back-top {
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  z-index:30;
+  width:48px;height:48px;
+  padding:0;
+  border-radius:50%;
+  font-size:22px;
+}
+footer {
+  padding:55px 15px 25px;
+  background:rgba(10,5,18,.97);
+  border-top:2px solid var(--gold);
+  text-align:center;
+}
+footer h2 {color:var(--gold)}
+footer p {color:#d4c4e8;line-height:2}
+.footer-links {
+  display:flex;justify-content:center;flex-wrap:wrap;gap:18px;
+  margin:20px 0;
+}
+.footer-links a {color:var(--gold);font-size:14px}
+.copyright {font-size:12px;color:#9c8cac}
+.reveal {
+  opacity:0;
+  transform:translateY(35px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.reveal.visible {opacity:1;transform:translateY(0)}
+@media(max-width:750px) {
+  .about-grid {grid-template-columns:1fr}
+  .stats {grid-template-columns:repeat(2,1fr)}
+  .features {grid-template-columns:1fr 1fr}
+  .hero {min-height:570px}
+  .gallery-main img {height:320px}
+  .top-info {display:none}
+  nav {position:relative}
+}
+@media(max-width:480px) {
+  .features {grid-template-columns:1fr}
+  .section-box {padding:19px}
+  .game-grid {gap:7px}
+  .memory-card {height:70px}
+  nav a {padding:9px;font-size:12px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="brand">✦ السابع د موفيت</div>
+  <div class="top-info" id="clock"></div>
+  <button onclick="toggleTheme()">☀️ / 🌙</button>
+</div>
+
+<nav>
+  <a href="#home">الرئيسية</a>
+  <a href="#about">عن الصف</a>
+  <a href="#stats">إحصائياتنا</a>
+  <a href="#gallery">الصور</a>
+  <a href="#timeline">الذكريات</a>
+  <a href="#video">الفيديو</a>
+  <a href="#features">ما يميزنا</a>
+  <a href="#messages">الرسائل</a>
+  <a href="#games">الألعاب</a>
+</nav>
+
+<!-- الرئيسية -->
+<header class="hero" id="home">
+  <div class="hero-content">
+    <span class="hero-badge">✦ موقع الذكريات الرسمي ✦</span>
+    <h1>السابع د موفيت</h1>
+    <div class="divider"></div>
+    <p>
+      ليست مجرد سنة دراسية، بل حكاية من الضحكات والمواقف
+      والصداقات واللحظات التي ستبقى في ذاكرتنا.
+    </p>
+    <div class="hero-buttons">
+      <a href="#gallery"><button>اكتشف ذكرياتنا 📸</button></a>
+      <a href="#messages"><button class="outline-button">اترك رسالة 💌</button></a>
+    </div>
+    <div class="scroll-hint">↓ اكتشف الموقع وانزل للأسفل ↓</div>
+  </div>
+</header>
+
+<main>
+
+<!-- عن الصف -->
+<section id="about">
+  <div class="container section-box reveal">
+    <div class="tag">OUR CLASS</div>
+    <h2 class="section-title">حكايتنا تبدأ هنا</h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          أهلًا بكم في موقع ذكريات السابع د موفيت.
+          هذا المكان يجمع لحظاتنا الجميلة، وصورنا،
+          ومواقفنا التي عشناها معًا خلال أيام الدراسة.
+        </p>
+        <p>
+          في كل يوم قصة جديدة، وفي كل صورة ذكرى،
+          وفي كل ضحكة لحظة لا يمكن نسيانها.
+          أنشأنا هذا الموقع ليكون ألبومًا رقميًا
+          يحتفظ بأجمل ما عشناه.
+        </p>
+      </div>
+      <div class="about-highlight">
+        <strong>💜</strong>
+        <h3>صف واحد، ذكريات لا تنتهي</h3>
+        <p>كل واحد منا جزء من هذه الحكاية.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- الإحصائيات -->
+<section id="stats">
+  <div class="container reveal">
+    <div class="tag">OUR NUMBERS</div>
+    <h2 class="section-title">أرقام وذكريات</h2>
+    <p class="section-subtitle">أرقام رمزية تعبّر عن روح صفنا، ويمكنك تعديلها لاحقًا.</p>
+    <div class="stats">
+      <div class="stat"><strong>5</strong><span>صور في المعرض</span></div>
+      <div class="stat"><strong>∞</strong><span>ذكريات جميلة</span></div>
+      <div class="stat"><strong>1</strong><span>صف مميز</span></div>
+      <div class="stat"><strong>100%</strong><span>روح الفريق</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- معرض الصور -->
+<section id="gallery">
+  <div class="container section-box reveal">
+    <div class="tag">PHOTO GALLERY</div>
+    <h2 class="section-title">معرض الذكريات</h2>
+    <p class="section-subtitle">كل صورة تحكي قصة، وكل لحظة تستحق أن تبقى.</p>
+    <div class="gallery-main">
+      <img id="mainPhoto" src="images/photo1.jpg" alt="صورة من ذكريات الصف">
+    </div>
+    <div class="gallery-controls center">
+      <button onclick="changePhoto(-1)">❮ السابقة</button>
+      <span id="photoCount">1 / 5</span>
+      <button onclick="changePhoto(1)">التالية ❯</button>
+    </div>
+    <div class="thumbnails" id="thumbnails"></div>
+  </div>
+</section>
+
+<!-- الخط الزمني -->
+<section id="timeline">
+  <div class="container section-box reveal">
+    <div class="tag">OUR JOURNEY</div>
+    <h2 class="section-title">رحلة الذكريات</h2>
+    <p class="section-subtitle">محطات جميلة من رحلتنا الدراسية.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>🌟 بداية الحكاية</h3>
+        <p>اجتمعنا في صف واحد، وبدأت بيننا رحلة مليئة بالتجارب والتعارف.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>📚 أيام الدراسة</h3>
+        <p>دروس وامتحانات ومواقف مضحكة وتحديات تعلمنا منها الكثير.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>📸 أجمل اللحظات</h3>
+        <p>صور ومناسبات ولقاءات صنعت ذكريات لن ننساها.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>💜 ذكريات إلى الأبد</h3>
+        <p>قد تتغير الأيام، لكن أجمل اللحظات ستبقى جزءًا من حكايتنا.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- الفيديو -->
+<section id="video">
+  <div class="container section-box reveal">
+    <div class="tag">CLASS VIDEO</div>
+    <h2 class="section-title">فيديو ذكرياتنا 🎬</h2>
+    <p class="section-subtitle">شاهدوا لحظاتنا الجميلة في مقطع واحد.</p>
+    <div class="video-frame">
+      <video controls playsinline preload="metadata">
+        <source src="WhatsApp Video 2026-10-10 at 09.59.08 (1).mp4" type="video/mp4">
+        متصفحك لا يدعم تشغيل الفيديو.
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- مميزات الصف -->
+<section id="features">
+  <div class="container reveal">
+    <div class="tag">OUR SPIRIT</div>
+    <h2 class="section-title">ما يميز صفنا</h2>
+    <p class="section-subtitle">أشياء تجعل أيامنا الدراسية أجمل.</p>
+    <div class="features">
+      <div class="feature">
+        <div class="emoji">🤝</div>
+        <h3>التعاون</h3>
+        <p>نساعد بعضنا ونتشارك المعرفة والخبرات.</p>
+      </div>
+      <div class="feature">
+        <div class="emoji">😂</div>
+        <h3>الضحك</h3>
+        <p>حتى الأيام الصعبة تصبح أجمل مع الأصدقاء.</p>
+      </div>
+      <div class="feature">
+        <div class="emoji">🎓</div>
+        <h3>الطموح</h3>
+        <p>نتعلم ونجتهد ونطمح دائمًا إلى الأفضل.</p>
+      </div>
+      <div class="feature">
+        <div class="emoji">💜</div>
+        <h3>الصداقة</h3>
+        <p>علاقات جميلة تجعل المدرسة مكانًا مميزًا.</p>
+      </div>
+      <div class="feature">
+        <div class="emoji">🏆</div>
+        <h3>الإنجاز</h3>
+        <p>نفرح بنجاحاتنا ونتعلم من تحدياتنا.</p>
+      </div>
+      <div class="feature">
+        <div class="emoji">✨</div>
+        <h3>الذكريات</h3>
+        <p>نصنع لحظات تستحق أن تبقى في الذاكرة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- رسائل الزوار -->
+<section id="messages">
+  <div class="container section-box reveal">
+    <div class="tag">GUEST BOOK</div>
+    <h2 class="section-title">دفتر رسائل الأصدقاء 💌</h2>
+    <p class="section-subtitle">اكتب كلمة جميلة أو ذكرى تحب أن تبقى هنا.</p>
+    <div class="contact-card">
+      <input id="visitorName" maxlength="40" placeholder="اسمك">
+      <textarea id="visitorMessage" maxlength="500" placeholder="اكتب رسالتك هنا..."></textarea>
+      <button onclick="addMessage()">إرسال الرسالة ✨</button>
+      <div class="message-list" id="messagesList"></div>
+      <p class="small-note">
+        الرسائل في هذه النسخة تُحفظ على الجهاز والمتصفح الذي أرسلها فقط.
+        لمشاركتها بين جميع الزوار نحتاج إلى قاعدة بيانات.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- الألعاب -->
+<section id="games">
+  <div class="container section-box reveal">
+    <div class="tag">PLAY & HAVE FUN</div>
+    <h2 class="section-title">ركن التحديات والألعاب 🎮</h2>
+    <p class="section-subtitle">اختبر ذاكرتك ومعلوماتك واستمتع بالتحدي.</p>
+
+    <h3 class="center" style="color:var(--gold)">🧠 لعبة الذاكرة</h3>
+    <p class="center">اكشف البطاقات واعثر على الأزواج المتشابهة.</p>
+    <p class="center" id="gameStatus">عدد المحاولات: 0</p>
+    <div class="game-grid" id="gameGrid"></div>
+    <div class="center">
+      <button onclick="startGame()">إعادة لعبة الذاكرة</button>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3 class="center" style="color:var(--gold)">🏆 تحدي المعلومات</h3>
+    <div class="quiz-question" id="question"></div>
+    <div class="answers" id="answers"></div>
+    <p class="center result" id="quizResult"></p>
+    <div class="center">
+      <button onclick="nextQuestion()" id="nextBtn" style="display:none">السؤال التالي</button>
+      <button onclick="startQuiz()">إعادة المسابقة</button>
+    </div>
+  </div>
+</section>
+
+<!-- رسالة ختامية -->
+<section>
+  <div class="container section-box center reveal">
+    <div class="tag">FOREVER MEMORIES</div>
+    <h2 class="section-title">وهكذا تستمر الحكاية...</h2>
+    <div class="divider"></div>
+    <p style="color:var(--muted);line-height:2.3;font-size:18px">
+      قد تنتهي الحصص والسنوات الدراسية، لكن الصداقة
+      والذكريات الجميلة لا تنتهي.
+      شكرًا لكل من كان جزءًا من هذه الرحلة. 💜
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <h2>السابع د موفيت</h2>
+  <p>ذكرياتنا تجمعنا، وأيامنا الجميلة تبقى معنا.</p>
+  <div class="footer-links">
+    <a href="#home">الرئيسية</a>
+    <a href="#gallery">معرض الصور</a>
+    <a href="#messages">الرسائل</a>
+    <a href="#games">الألعاب</a>
+  </div>
+  <p class="copyright">© السابع د موفيت | جميع الحقوق محفوظة</p>
+</footer>
+
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="العودة إلى الأعلى">↑</button>
+
+<script>
+// الساعة والتاريخ
+function updateClock() {
+  const now = new Date();
+  document.getElementById("clock").textContent =
+    now.toLocaleDateString("ar") + " | " + now.toLocaleTimeString("ar");
+}
+updateClock();
+setInterval(updateClock,1000);
+
+// الوضع الليلي والنهاري
+function toggleTheme() {
+  document.body.classList.toggle("light");
+}
+
+// ظهور الأقسام عند التمرير
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+},{threshold:.12});
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+// معرض الصور
+const photos = [
+  "WhatsApp Image 2026-10-24 at 09.52.08 (2).jpeg",
+  "WhatsApp Image 2026-10-24 at 09.52.08 (3).jpeg",
+  "WhatsApp Image 2026-10-24 at 09.52.08 (4).jpeg",
+  "WhatsApp Image 2026-10-24 at 09.52.08.jpeg",
+  "WhatsApp Image 2026-10-24 at 09.52.08 (3).jpeg"
+];
+let currentPhoto = 0;
+const mainPhoto = document.getElementById("mainPhoto");
+const photoCount = document.getElementById("photoCount");
+const thumbnails = document.getElementById("thumbnails");
+
+photos.forEach((src,index) => {
+  const img = document.createElement("img");
+  img.src = src;
+  img.alt = "صورة ذكريات " + (index + 1);
+  img.onclick = () => {
+    currentPhoto = index;
+    showPhoto();
+  };
+  thumbnails.appendChild(img);
+});
+
+function showPhoto() {
+  mainPhoto.src = photos[currentPhoto];
+  photoCount.textContent = `${currentPhoto + 1} / ${photos.length}`;
+  document.querySelectorAll(".thumbnails img").forEach((img,index) => {
+    img.classList.toggle("active",index === currentPhoto);
+  });
+}
+function changePhoto(direction) {
+  currentPhoto = (currentPhoto + direction + photos.length) % photos.length;
+  showPhoto();
+}
+showPhoto();
+
+// رسائل الزوار
+const messageKey = "memoriesGuestbookV2";
+
+function renderMessages() {
+  const list = document.getElementById("messagesList");
+  list.replaceChildren();
+  let messages = [];
+  try {
+    messages = JSON.parse(localStorage.getItem(messageKey) || "[]");
+    if(!Array.isArray(messages)) messages = [];
+  } catch { messages = []; }
+
+  messages.slice().reverse().forEach(item => {
+    const box = document.createElement("div");
+    box.className = "message";
+    const name = document.createElement("strong");
+    name.textContent = item.name;
+    const text = document.createElement("p");
+    text.textContent = item.text;
+    box.append(name,text);
+    list.appendChild(box);
+  });
+}
+
+function addMessage() {
+  const name = document.getElementById("visitorName").value.trim();
+  const text = document.getElementById("visitorMessage").value.trim();
+  if(!name || !text) {
+    alert("اكتب اسمك ورسالتك أولًا.");
+    return;
+  }
+  let messages = [];
+  try {
+    messages = JSON.parse(localStorage.getItem(messageKey) || "[]");
+    if(!Array.isArray(messages)) messages = [];
+  } catch { messages = []; }
+
+  messages.push({name,text});
+  try {
+    localStorage.setItem(messageKey,JSON.stringify(messages));
+  } catch {
+    alert("تعذر حفظ الرسالة.");
+    return;
+  }
+  document.getElementById("visitorName").value = "";
+  document.getElementById("visitorMessage").value = "";
+  renderMessages();
+}
+renderMessages();
+
+// لعبة الذاكرة
+const symbols = ["⭐","❤️","🎓","📚","⚽","🎵","🌟","🎈"];
+let firstCard = null;
+let secondCard = null;
+let locked = false;
+let attempts = 0;
+let matchedPairs = 0;
+
+function startGame() {
+  const grid = document.getElementById("gameGrid");
+  grid.replaceChildren();
+  firstCard = null;
+  secondCard = null;
+  locked = false;
+  attempts = 0;
+  matchedPairs = 0;
+  document.getElementById("gameStatus").textContent = "عدد المحاولات: 0";
+
+  [...symbols,...symbols].sort(() => Math.random() - .5).forEach(symbol => {
+    const card = document.createElement("button");
+    card.className = "memory-card";
+    card.textContent = "?";
+    card.dataset.symbol = symbol;
+    card.onclick = () => flipCard(card);
+    grid.appendChild(card);
+  });
+}
+
+function flipCard(card) {
+  if(locked || card.classList.contains("matched") ||
+     card === firstCard) return;
+
+  card.textContent = card.dataset.symbol;
+  if(!firstCard) {
+    firstCard = card;
+    return;
+  }
+
+  secondCard = card;
+  attempts++;
+  document.getElementById("gameStatus").textContent =
+    "عدد المحاولات: " + attempts;
+
+  if(firstCard.dataset.symbol === secondCard.dataset.symbol) {
+    firstCard.classList.add("matched");
+    secondCard.classList.add("matched");
+    firstCard = null;
+    secondCard = null;
+    matchedPairs++;
+    if(matchedPairs === symbols.length) {
+      setTimeout(() => alert("رائع! أنهيت اللعبة في " + attempts + " محاولة 🎉"),150);
+    }
+  } else {
+    locked = true;
+    setTimeout(() => {
+      firstCard.textContent = "?";
+      secondCard.textContent = "?";
+      firstCard = null;
+      secondCard = null;
+      locked = false;
+    },850);
+  }
+}
+startGame();
+
+// المسابقة
+const questions = [
+  {q:"كم عدد أيام الأسبوع؟",a:["5 أيام","7 أيام","10 أيام"],correct:1},
+  {q:"ما عاصمة فلسطين؟",a:["القدس","عمان","بيروت"],correct:0},
+  {q:"كم يساوي 8 × 7؟",a:["54","56","64"],correct:1},
+  {q:"ما الكوكب الأحمر؟",a:["الزهرة","المريخ","المشتري"],correct:1},
+  {q:"كم عدد حروف اللغة العربية؟",a:["26","28","30"],correct:1},
+  {q:"كم ضلعًا للمثلث؟",a:["3","4","5"],correct:0},
+  {q:"ما أكبر محيط في العالم؟",a:["الأطلسي","الهندي","الهادئ"],correct:2}
+];
+
+let questionIndex = 0;
+let score = 0;
+let answered = false;
+
+function startQuiz() {
+  questionIndex = 0;
+  score = 0;
+  showQuestion();
+}
+
+function showQuestion() {
+  answered = false;
+  const q = questions[questionIndex];
+  document.getElementById("question").textContent =
+    `${questionIndex + 1}. ${q.q}`;
+  document.getElementById("quizResult").textContent = "";
+  document.getElementById("nextBtn").style.display = "none";
+  const answers = document.getElementById("answers");
+  answers.replaceChildren();
+
+  q.a.forEach((answer,index) => {
+    const btn = document.createElement("button");
+    btn.textContent = answer;
+    btn.onclick = () => checkAnswer(index);
+    answers.appendChild(btn);
+  });
+}
+
+function checkAnswer(index) {
+  if(answered) return;
+  answered = true;
+  const correct = questions[questionIndex].correct;
+
+  if(index === correct) {
+    score++;
+    document.getElementById("quizResult").textContent = "إجابة صحيحة! 🎉";
+  } else {
+    document.getElementById("quizResult").textContent =
+      "الإجابة الصحيحة: " + questions[questionIndex].a[correct];
+  }
+
+  const next = document.getElementById("nextBtn");
+  next.style.display = "inline-block";
+  next.textContent = questionIndex === questions.length - 1
+    ? "عرض النتيجة" : "السؤال التالي";
+}
+
+function nextQuestion() {
+  if(!answered) return;
+  if(questionIndex < questions.length - 1) {
+    questionIndex++;
+    showQuestion();
+  } else {
+    document.getElementById("question").textContent = "انتهت المسابقة!";
+    document.getElementById("answers").replaceChildren();
+    document.getElementById("quizResult").textContent =
+      `نتيجتك: ${score} من ${questions.length} 🏆`;
+    document.getElementById("nextBtn").style.display = "none";
+  }
+}
+startQuiz();
+</script>
+</body>
+</html>
